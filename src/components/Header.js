@@ -16,20 +16,20 @@ function Header() {
       </div>
       <div className="header-nav">
         <div className="header-option">
-          <span className="header-option1">Hello Guest</span>
-          <span className="header-option2">Sign In</span>
+          <span className="header-option-one">Hello Guest</span>
+          <span className="header-option-two">Sign In</span>
         </div>
         <div className="header-option">
-          <span className="header-option1">Returns</span>
-          <span className="header-option2">& Orders</span>
+          <span className="header-option-one">Returns</span>
+          <span className="header-option-two">& Orders</span>
         </div>
         <div className="header-option">
-          <span className="header-option1">Your</span>
-          <span className="header-option2">Prime</span>
+          <span className="header-option-one">Your</span>
+          <span className="header-option-two">Prime</span>
         </div>
         <div className="header-basket">
           <ShoppingBasketIcon />
-          <span className="header-option2 basket-count">0</span>
+          <span className="header-option-two basket-count">0</span>
         </div>
       </div>
     </div>
