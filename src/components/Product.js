@@ -1,4 +1,4 @@
-import React from "react";
+import "./Product.css";
 
 function Product() {
   return (
@@ -9,7 +9,8 @@ function Product() {
           Paperback
         </p>
         <p className="product-price">
-          $<strong>11.96</strong>
+          <small>$</small>
+          <strong>11.96</strong>
         </p>
         <div className="product-rating">
           <p>🌟</p>
@@ -17,8 +18,12 @@ function Product() {
           <p>🌟</p>
         </div>
       </div>
-      <img src="./images/theLeanStartup.jpg" alt="The Lean Startup Book" />
-      <button>Add to Basket</button>
+      <img
+        className="product-image"
+        src="./images/theLeanStartup.jpg"
+        alt="The Lean Startup Book"
+      />
+      <button id="add-to-basket-btn">Add to Basket</button>
     </div>
   );
 }
