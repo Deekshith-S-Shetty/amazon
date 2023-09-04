@@ -1,28 +1,23 @@
 import "./Product.css";
 
-function Product() {
+function Product({ id, title, image, price, rating }) {
   return (
     <div className="product">
       <div className="product-info">
-        <p>
-          The lean Startup: How Constant Innovation Creates Radically Successful
-          Paperback
-        </p>
+        <p>{title}</p>
         <p className="product-price">
           <small>$</small>
-          <strong>11.96</strong>
+          <strong>{price}</strong>
         </p>
         <div className="product-rating">
-          <p>🌟</p>
-          <p>🌟</p>
-          <p>🌟</p>
+          {Array(rating)
+            .fill()
+            .map((value, index) => {
+              return <p key={index}>🌟</p>;
+            })}
         </div>
       </div>
-      <img
-        className="product-image"
-        src="./images/theLeanStartup.jpg"
-        alt="The Lean Startup Book"
-      />
+      <img className="product-image" src={image} alt="Product" />
       <button id="add-to-basket-btn">Add to Basket</button>
     </div>
   );
