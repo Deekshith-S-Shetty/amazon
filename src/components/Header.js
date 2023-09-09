@@ -1,8 +1,10 @@
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import { useStateValue } from "./DataLayer/StateProvider";
 import "./Header.css";
 
 function Header() {
+  const [{ basket, user }, dispatch] = useStateValue();
   return (
     <div className="header">
       <img
@@ -29,7 +31,9 @@ function Header() {
         </div>
         <div className="header-basket">
           <ShoppingBasketIcon />
-          <span className="header-option-two basket-count">0</span>
+          <span className="header-option-two basket-count">
+            {basket?.length}
+          </span>
         </div>
       </div>
     </div>
