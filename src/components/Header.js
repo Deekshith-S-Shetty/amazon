@@ -1,6 +1,7 @@
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { useStateValue } from "./DataLayer/StateProvider";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
@@ -29,12 +30,14 @@ function Header() {
           <span className="header-option-one">Your</span>
           <span className="header-option-two">Prime</span>
         </div>
-        <div className="header-basket">
-          <ShoppingBasketIcon />
-          <span className="header-option-two basket-count">
-            {basket?.length}
-          </span>
-        </div>
+        <Link to="/checkout" style={{ textDecoration: "none" }}>
+          <div className="header-basket">
+            <ShoppingBasketIcon />
+            <span className="header-option-two basket-count">
+              {basket?.length}
+            </span>
+          </div>
+        </Link>
       </div>
     </div>
   );
