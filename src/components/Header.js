@@ -8,20 +8,24 @@ function Header() {
   const [{ basket, user }, dispatch] = useStateValue();
   return (
     <div className="header">
-      <img
-        className="header-logo"
-        src="./images/amazonLogo.png"
-        alt="Amazon Logo"
-      />
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <img
+          className="header-logo"
+          src="./images/amazonLogo.png"
+          alt="Amazon Logo"
+        />
+      </Link>
       <div className="header-search">
         <input className="header-searchInput" type="text" />
         <SearchIcon className="header-searchIcon" />
       </div>
       <div className="header-nav">
-        <div className="header-option">
-          <span className="header-option-one">Hello Guest</span>
-          <span className="header-option-two">Sign In</span>
-        </div>
+        <Link to="/login" style={{ textDecoration: "none" }}>
+          <div className="header-option">
+            <span className="header-option-one">Hello Guest</span>
+            <span className="header-option-two">Sign In</span>
+          </div>
+        </Link>
         <div className="header-option">
           <span className="header-option-one">Returns</span>
           <span className="header-option-two">& Orders</span>
