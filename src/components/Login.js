@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./Login.css";
 
 function Login() {
   return (
@@ -6,7 +7,7 @@ function Login() {
       <Link to="/">
         <img
           className="login-logo"
-          src="/images/amazonLogo.png"
+          src="/images/loginLogo.png"
           alt="amazon logo"
         />
       </Link>
