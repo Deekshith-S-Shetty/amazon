@@ -8,10 +8,27 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Header />
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/checkout" element={<Checkout />} />
+        <Route
+          exact
+          path="/"
+          element={
+            <>
+              <Header />
+              <Home />
+            </>
+          }
+        />
+        <Route
+          exact
+          path="/checkout"
+          element={
+            <>
+              <Header />
+              <Checkout />
+            </>
+          }
+        />
         <Route exact path="/login" element={<Login />} />
       </Routes>
     </div>
