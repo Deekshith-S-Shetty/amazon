@@ -1,10 +1,34 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import { auth } from "./DataLayer/Firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const signIn = (e) => {
+    e.preventDefault();
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+        navigate("/");
+      })
+      .catch((error) => alert(error.message));
+  };
+
+  const register = (e) => {
+    e.preventDefault();
+
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((auth) => {
+        navigate("/");
+      })
+      .catch((error) => alert(error.message));
+  };
+
   return (
     <div className="login">
       <Link to="/">
@@ -31,7 +55,7 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type="submit" className="login-btn btn">
+          <button type="submit" onClick={signIn} className="login-btn btn">
             Sign In
           </button>
         </form>
@@ -41,7 +65,9 @@ function Login() {
           Notice.
         </p>
 
-        <button className="register-btn">Create your Amazon Account</button>
+        <button onClick={register} className="register-btn">
+          Create your Amazon Account
+        </button>
       </div>
     </div>
   );
