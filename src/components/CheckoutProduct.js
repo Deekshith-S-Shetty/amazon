@@ -1,4 +1,5 @@
 import { useStateValue } from "./DataLayer/StateProvider";
+import "./CheckoutProduct.css";
 
 function CheckoutProduct({ id, image, title, price, rating, hideButton }) {
   const [{ basket }, dispatch] = useStateValue();
