@@ -1,36 +1,34 @@
 import { useStateValue } from "./DataLayer/StateProvider";
-import "./CheckoutProduct.css";
 
-function CheckoutProduct({ id, image, title, price, rating, hideButton }) {
-  const [{ basket }, dispatch] = useStateValue();
+function CheckoutProduct({ id, image, title, price, rating }) {
+  const [{}, dispatch] = useStateValue();
 
-  const removeFromBasket = () => {
-    dispatch({
-      type: "removeFromBasket",
-      id: id,
-    });
-  };
+  const removeFromBasket = () => {};
 
   return (
-    <div className="checkoutProduct">
-      <img className="checkoutProduct__image" src={image} alt="Product" />
+    <div className="checkout-product">
+      <img className="checkout-product-img" src={image} alt="Product" />
 
-      <div className="checkoutProduct__info">
-        <p className="checkoutProduct__title">{title}</p>
-        <p className="checkoutProduct__price">
+      <div className="product-info">
+        <p className="product-title">{title}</p>
+        <p className="product-price">
           <small>$</small>
           <strong>{price}</strong>
         </p>
-        <div className="checkoutProduct__rating">
+        <div className="product-rating">
           {Array(rating)
             .fill()
-            .map((_, i) => (
-              <p>🌟</p>
-            ))}
+            .map((value, index) => {
+              return <p key={index}>🌟</p>;
+            })}
         </div>
-        {!hideButton && (
-          <button onClick={removeFromBasket}>Remove from Basket</button>
-        )}
+        <button
+          id="remove-from-basket-btn"
+          className="btn"
+          onClick={removeFromBasket}
+        >
+          Remove From Basket
+        </button>
       </div>
     </div>
   );
