@@ -1,9 +1,15 @@
 import { useStateValue } from "./DataLayer/StateProvider";
+import "./CheckoutProduct.css";
 
 function CheckoutProduct({ id, image, title, price, rating }) {
   const [{}, dispatch] = useStateValue();
 
-  const removeFromBasket = () => {};
+  const removeFromBasket = () => {
+    dispatch({
+      type: "removeFromBasket",
+      id: id,
+    });
+  };
 
   return (
     <div className="checkout-product">
