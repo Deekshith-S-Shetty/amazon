@@ -1,5 +1,6 @@
 import { useStateValue } from "./DataLayer/StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
+import SubTotal from "./SubTotal";
 import "./Checkout.css";
 
 function Checkout() {
@@ -30,7 +31,7 @@ function Checkout() {
         </div>
       </div>
       <div className="checkout-right">
-        <span>Total amounts come here</span>
+        <SubTotal />
       </div>
     </div>
   );
