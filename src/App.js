@@ -5,6 +5,7 @@ import Checkout from "./components/Checkout";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Login from "./components/Login";
+import Payment from "./components/Payment";
 import "./App.css";
 import { useStateValue } from "./components/DataLayer/StateProvider";
 
@@ -49,6 +50,16 @@ function App() {
             <>
               <Header />
               <Checkout />
+            </>
+          }
+        />
+        <Route
+          exact
+          path="/payment"
+          element={
+            <>
+              <Header />
+              <Payment />
             </>
           }
         />
