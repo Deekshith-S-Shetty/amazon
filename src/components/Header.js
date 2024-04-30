@@ -49,7 +49,7 @@ function Header() {
         <Link to="/checkout" style={{ textDecoration: "none" }}>
           <div className="header-basket">
             <ShoppingBasketIcon />
-            <span className="header-option-two basket-count">
+            <span className="header-option-two header-basket-count">
               {basket?.length}
             </span>
           </div>
