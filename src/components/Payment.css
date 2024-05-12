@@ -24,10 +24,31 @@
 
 .payment-title {
   flex: 0.2;
+  margin-right: 15px;
 }
 
 .payment-address,
 .payment-items,
 .payment-details {
   flex: 0.8;
+}
+
+.payment-details > form {
+  max-width: 400px;
+  padding: 5px;
+}
+
+.price-container {
+  padding: 10px 0;
+}
+
+.pay-btn {
+  background: #f0c14b;
+  border-radius: 3px;
+  width: 100%;
+  height: 30px;
+  font-weight: bolder;
+  margin-top: 10px;
+  border: none;
+  color: #111;
 }

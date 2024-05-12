@@ -6,8 +6,14 @@ import Home from "./components/Home";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Payment from "./components/Payment";
-import "./App.css";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import { useStateValue } from "./components/DataLayer/StateProvider";
+import "./App.css";
+
+const promise = loadStripe(
+  "pk_test_51Mj0qPSJWSrI7pZGhuLURDsoh5ExLsIsqtifEXkZIemhuKYKuACkG3jWlgDqIZla4532KobXrGB8G1ESiiuDhk8X00YNylCQw1"
+);
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -59,7 +65,9 @@ function App() {
           element={
             <>
               <Header />
-              <Payment />
+              <Elements stripe={promise}>
+                <Payment />
+              </Elements>
             </>
           }
         />
