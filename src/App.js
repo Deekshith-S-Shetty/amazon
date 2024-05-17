@@ -5,6 +5,7 @@ import Checkout from "./components/Checkout";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Login from "./components/Login";
+import Orders from "./components/Orders";
 import Payment from "./components/Payment";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
@@ -56,6 +57,16 @@ function App() {
             <>
               <Header />
               <Checkout />
+            </>
+          }
+        />
+        <Route
+          exact
+          path="/orders"
+          element={
+            <>
+              <Header />
+              <Orders />
             </>
           }
         />

@@ -4,16 +4,11 @@ import { useStateValue } from "./DataLayer/StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "./DataLayer/reducer";
-import {
-  useStripe,
-  useElements,
-  PaymentElement,
-  CardElement,
-} from "@stripe/react-stripe-js";
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { Link } from "react-router-dom";
-import "./Payment.css";
 import axios from "axios";
-import { Replay } from "@mui/icons-material";
+import { db } from "./DataLayer/Firebase";
+import "./Payment.css";
 
 axios.defaults.baseURL = "http://127.0.0.1:5001/fir-2bbb7/us-central1/api";
 
@@ -45,17 +40,28 @@ export default function Payment() {
     event.preventDefault();
     setProcessing(true);
 
-    const payload = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement),
-      },
-    });
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      })
+      .then(({ paymentIntent }) => {
+        db.collection("users")
+          .doc(user?.uid)
+          .collection("orders")
+          .doc(paymentIntent.id)
+          .set({
+            basket: basket,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          });
 
-    setSucceeded(true);
-    setError(null);
-    setProcessing(false);
-
-    dispatch({ type: "EMPTY_BASKET" });
+        setSucceeded(true);
+        setError(null);
+        setProcessing(false);
+        dispatch({ type: "EMPTY_BASKET" });
+      });
 
     navigate("/", { replace: true });
   };
