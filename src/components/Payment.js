@@ -26,14 +26,18 @@ export default function Payment() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const getClientSecret = async () => {
-      const response = await axios({
-        method: "post",
-        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
-      });
-      setClientSecret(response.data.clientSecret);
-    };
-    getClientSecret();
+    try {
+      const getClientSecret = async () => {
+        const response = await axios({
+          method: "post",
+          url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
+        });
+        setClientSecret(response.data.clientSecret);
+      };
+      getClientSecret();
+    } catch {
+      console.log("Cannot Get Client Secret");
+    }
   }, [basket]);
 
   const handleSubmit = async (event) => {
@@ -46,7 +50,13 @@ export default function Payment() {
           card: elements.getElement(CardElement),
         },
       })
-      .then(({ paymentIntent }) => {
+      .then((result) => {
+        let paymentIntent;
+        if (result.error) {
+          paymentIntent = result.error.payment_intent;
+        } else {
+          paymentIntent = result.paymentIntent;
+        }
         db.collection("users")
           .doc(user?.uid)
           .collection("orders")
