@@ -1,7 +1,7 @@
 import { useStateValue } from "./DataLayer/StateProvider";
 import "./CheckoutProduct.css";
 
-function CheckoutProduct({ id, image, title, price, rating }) {
+function CheckoutProduct({ id, image, title, price, rating, hideButton }) {
   const [{}, dispatch] = useStateValue();
 
   const removeFromBasket = () => {
@@ -28,13 +28,15 @@ function CheckoutProduct({ id, image, title, price, rating }) {
               return <p key={index}>🌟</p>;
             })}
         </div>
-        <button
-          id="remove-from-basket-btn"
-          className="btn"
-          onClick={removeFromBasket}
-        >
-          Remove From Basket
-        </button>
+        {!hideButton && (
+          <button
+            id="remove-from-basket-btn"
+            className="btn"
+            onClick={removeFromBasket}
+          >
+            Remove From Basket
+          </button>
+        )}
       </div>
     </div>
   );
