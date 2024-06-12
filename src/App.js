@@ -4,6 +4,7 @@ import { auth } from "./components/DataLayer/Firebase";
 import Checkout from "./components/Checkout";
 import Home from "./components/Home";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Orders from "./components/Orders";
 import Payment from "./components/Payment";
@@ -47,6 +48,7 @@ function App() {
             <>
               <Header />
               <Home />
+              <Footer />
             </>
           }
         />

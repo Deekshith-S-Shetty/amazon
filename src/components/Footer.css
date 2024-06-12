@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0 100px;
+  background-color: #272b2b;
+}
+
+.footer-block > h4 {
+  color: #fff;
+}
+
+.footer-block {
+  color: #ddd;
+  padding: 50px 0;
+  min-width: 400px;
+}
+
+.footer-block > p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
