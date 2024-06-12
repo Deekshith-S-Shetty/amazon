@@ -61,6 +61,36 @@ function Home() {
             image="./images/curvedScreen.jpg"
           />
         </div>
+        <div className="home-row">
+          <Product
+            id="898989889"
+            title="Samsung Galazy S24 Ultra"
+            price={750}
+            rating={4}
+            image="./images/phone.png"
+          />
+          <Product
+            id="9852656"
+            title="BENGOO G9000 Stereo Gaming Headset"
+            price={300}
+            rating={3}
+            image="./images/headSet.png"
+          />
+          <Product
+            id="56851565"
+            title="SKDOIUL Men Sport Running Shoes"
+            price={149}
+            rating={5}
+            image="./images/shoe.png"
+          />
+          <Product
+            id="259874236"
+            title="Acer Nitro V Gaming Laptop"
+            price={949}
+            rating={4}
+            image="./images/laptop.png"
+          />
+        </div>
       </div>
     </div>
   );

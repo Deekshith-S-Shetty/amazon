@@ -64,36 +64,38 @@ export default function Payment() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setProcessing(true);
+    try {
+      const payload = await stripe
+        .confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: elements.getElement(CardElement),
+          },
+        })
+        .then((result) => {
+          let paymentIntent;
+          if (result.error) {
+            paymentIntent = result.error.payment_intent;
+          } else {
+            paymentIntent = result.paymentIntent;
+          }
+          db.collection("users")
+            .doc(user?.uid)
+            .collection("orders")
+            .doc(paymentIntent.id)
+            .set({
+              basket: basket,
+              amount: paymentIntent.amount,
+              created: paymentIntent.created,
+            });
 
-    const payload = await stripe
-      .confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        },
-      })
-      .then((result) => {
-        let paymentIntent;
-        if (result.error) {
-          paymentIntent = result.error.payment_intent;
-        } else {
-          paymentIntent = result.paymentIntent;
-        }
-        db.collection("users")
-          .doc(user?.uid)
-          .collection("orders")
-          .doc(paymentIntent.id)
-          .set({
-            basket: basket,
-            amount: paymentIntent.amount,
-            created: paymentIntent.created,
-          });
-
-        setSucceeded(true);
-        setError(null);
-        setProcessing(false);
-        dispatch({ type: "EMPTY_BASKET" });
-      });
-
+          setSucceeded(true);
+          setError(null);
+          setProcessing(false);
+          dispatch({ type: "EMPTY_BASKET" });
+        });
+    } catch (err) {
+      console.log(err.message);
+    }
     navigate("/", { replace: true });
   };
 
