@@ -1,9 +1,10 @@
 .checkout-product {
   display: flex;
   margin: 20px 0;
+  align-items: center;
 }
 
-.product-info {
+.checkout-product-info {
   padding-left: 20px;
 }
 
@@ -26,5 +27,17 @@
 
 .product-title {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 550px) {
+  .checkout-product {
+    flex-direction: column;
+    padding: 20px 10px;
+    border: 1px solid gainsboro;
+  }
+
+  .checkout-product-img {
+    align-self: center;
+  }
 }

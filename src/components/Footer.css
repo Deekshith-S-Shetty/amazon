@@ -2,8 +2,9 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 10px 100px;
+  padding: 20px 100px;
   background-color: #272b2b;
+  margin-top: 10px;
 }
 
 .footer-block > h4 {
