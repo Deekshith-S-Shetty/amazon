@@ -30,13 +30,13 @@ export default function Payment() {
 
     const createPaymentIntent = async () => {
       const total = Math.round(getBasketTotal(basket) * 100);
-      console.log(process.env.REACT_APP_STRIPE_SECRET_KEY);
 
       const response = await fetch(
         "https://api.stripe.com/v1/payment_intents",
         {
           method: "POST",
           headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
             Authorization: `Bearer ${process.env.REACT_APP_STRIPE_SECRET_KEY}`, // Note: This is not secure for production
           },
           body: new URLSearchParams({
@@ -100,9 +100,7 @@ export default function Payment() {
   };
 
   const handleChange = (event) => {
-    if (error) {
-      setDisabled(event.empty);
-    }
+    setDisabled(event.empty);
     setError(event.error ? event.error.message : "");
   };
 
