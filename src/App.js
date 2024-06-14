@@ -13,9 +13,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useStateValue } from "./components/DataLayer/StateProvider";
 import "./App.css";
 
-const promise = loadStripe(
-  "pk_test_51Mj0qPSJWSrI7pZGhuLURDsoh5ExLsIsqtifEXkZIemhuKYKuACkG3jWlgDqIZla4532KobXrGB8G1ESiiuDhk8X00YNylCQw1"
-);
+const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 function App() {
   const [{}, dispatch] = useStateValue();
