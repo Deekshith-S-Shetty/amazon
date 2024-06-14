@@ -10,6 +10,13 @@
   min-width: 200px;
   background-color: white;
   z-index: 1;
+  border-radius: 8px;
+  transition: all ease 0.5s;
+}
+
+.product:hover {
+  filter: drop-shadow(1px 2px 4px hsl(220deg 60% 50%));
+  transform: translateY(-10px);
 }
 
 .product-rating {
