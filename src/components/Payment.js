@@ -96,7 +96,7 @@ export default function Payment() {
     } catch (err) {
       console.log(err.message);
     }
-    navigate("/", { replace: true });
+    navigate("/orders", { replace: true });
   };
 
   const handleChange = (event) => {
