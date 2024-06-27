@@ -14,7 +14,9 @@
 - **React**: For building the user interface.
 - **Firebase**: For authentication, database, and hosting.
 - **Stripe**: For payment processing.
+- **HTML**: For structuring web pages.
 - **CSS**: For styling the application.
+- **JavaScript**: For implementing dynamic functionalities and logic.
 
 ## **Screenshots**
 
